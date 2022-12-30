@@ -1,6 +1,6 @@
 //Valid character means: value should be [0-9][a-z][A-Z]
 //APPROCH:
-//1.remove extra character
+//1. remove extra character
 //2. try to put everything either in lower/upper case
 //3. check for palindrome
 
@@ -18,7 +18,7 @@ function validPalindrome(str) {
 
   //put into lower case
   for (let j = 0; j <= e; j++) {
-    temp[j] = putToLowerCase(temp[j]);
+    temp[j] = toLowerCase(temp[j]);
   }
 
   //check for palindrome
@@ -34,13 +34,12 @@ function validPalindrome(str) {
   return 1;
 }
 
-function putToLowerCase(ch) {
+function toLowerCase(ch) {
   if ((ch >= "a" && ch <= "z") || (ch >= "0" && ch <= "9")) {
     return ch;
   } else {
-    let temp = ch - "A" + "a";
-    console.log("putlower yes \n", ch);
-    return temp;
+    let temp = "a".charCodeAt(0) - "A".charCodeAt(0) + ch.charCodeAt(0);
+    return String.fromCharCode(temp);
   }
 }
 
@@ -56,5 +55,5 @@ function removeExtraCharacter(ch) {
   return 0;
 }
 
-let str = "VaraV";
+let str = "VaraaV";
 console.log(validPalindrome(str));
